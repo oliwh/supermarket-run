@@ -1,27 +1,36 @@
-import Player from 'Player.js';
-import 'initShelves.js';
-
 let player;
-let scale = 15;
-
+let levelScale = 15;
+let tiles = [];
 
 function preload() {
 }
 
 function setup() {
     frameRate(60);
-    createCanvas(scale * 25, scale * 25);
+    createCanvas(levelScale * 25, levelScale * 25);
     player = new Player(13, 12);
-    //instanciates all shelves
-    initShelves();
+
+    for(let i = 0; i < 25; i++) {
+        for(j = 0; j < 25; j++) {
+            switch(level[i][j]) {
+                case 1:
+                    tiles.push(new Tile(j, i, 1));
+                    break;
+                case 2:
+                    tiles.push(new Tile(j, i, 2));
+                    break;
+                //add cases for powerups eventually
+            }
+        }
+    }
 }
 
 function draw() {
     background('#9a9fa7');
     player.show();
-    //draws all shelves
-    for(let i = 0; i < shelves.length; i++) {
-        shelves[i].show();
+    //Draw Level
+    for(let i = 0; i < tiles.length; i++) {
+        tiles[i].show();
     }
 }
 //moves the player when wasd are pressed
