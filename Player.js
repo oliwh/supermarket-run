@@ -1,21 +1,17 @@
 class Player {
     constructor(x, y) {
-        this.x = scale * x;
-        this.y = scale * y;
+        this.x = levelScale * x;
+        this.y = levelScale * y;
     }
 
     move(x, y) {
-        this.x += scale * x;
-        this.y += scale * y;
-        if(this.x > scale * 24) {
-            this.x = scale * 24;
-        } else if(this.x < 0) {
-            this.x = 0;
-        }
-        if(this.y > scale * 24) {
-            this.y = scale * 24;
-        } else if(this.y < 0) {
-            this.y = 0;
+        if((this.x + (levelScale * x) <= levelScale * 24) && (this.x + (levelScale * x) >= 0) && (this.y + (levelScale * y) <= levelScale * 24) && (this.y + (levelScale * y) >= 0)) {
+            if(!(level[(this.y + (levelScale * y))/levelScale][(this.x + (levelScale * x))/levelScale] == 1)) {
+                this.x += levelScale * x;
+                this.y += levelScale * y;
+            }
+            print(this.x);
+            print(this.y);
         }
     }
 
@@ -25,7 +21,7 @@ class Player {
         strokeWeight(4);
         noFill();
         ellipseMode(CORNER);
-        ellipse(this.x, this.y, scale, scale);
+        ellipse(this.x, this.y, levelScale, levelScale);
         //image(playerImg, this.x, this.y, 88, 192);
     }
 }
