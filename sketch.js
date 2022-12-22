@@ -34,19 +34,7 @@ function draw() {
     }
     keyDetect();
 }
-//moves the player when wasd are pressed
-/*function keyPressed() {
-    if(key == 'w') {
-        player.move(0, -1);
-    } else if(key == 's') {
-        player.move(0, 1);
-    } else if(key == 'a') {
-        player.move(-1, 0);
-    } else if(key == 'd') {
-        player.move(1, 0);
-    }
-}*/
-
+//Moves the player when wasd are pressed
 function keyDetect() {
     if(frameCount % 1 == 0) {
         if (keyIsDown(87)) {//w
@@ -56,7 +44,7 @@ function keyDetect() {
             player.move(0, 1);
         }
        if (keyIsDown(65)) {//a
-           player.move(-1, 0);
+            player.move(-1, 0);
       }
       if (keyIsDown(68)) {//d
             player.move(1, 0);
