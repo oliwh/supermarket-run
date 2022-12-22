@@ -23,8 +23,8 @@ class Tile {
         push();
         noStroke();
         fill(255);
-        rectMode(CORNER);
-        translate(this.x, this.y);
+        rectMode(CENTER);
+        translate(this.x + (levelScale / 2), this.y + (levelScale / 2));
         rect(0, 0, levelScale, levelScale);
         pop();
     }
