@@ -24,8 +24,7 @@ class Tile {
         noStroke();
         fill(255);
         rectMode(CENTER);
-        translate(this.x + (levelScale / 2), this.y + (levelScale / 2));
-        rect(0, 0, levelScale, levelScale);
+        rect(this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale, levelScale);
         pop();
     }
 }
