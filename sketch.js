@@ -9,10 +9,10 @@ function setup() {
     frameRate(60);
     createCanvas(levelScale * 25, levelScale * 25);
     player = new Player(13, 12);
-
     for(let i = 0; i < 25; i++) {
         for(j = 0; j < 25; j++) {
             switch(level[i][j]) {
+                //No tiles created for empty spaces
                 case 1:
                     tiles.push(new Tile(j, i, 1));
                     break;
@@ -29,12 +29,13 @@ function draw() {
     background('#9a9fa7');
     player.show();
     //Draw Level
-    for(let i = 0; i < tiles.length; i++) {
+    for(let i = 0; i < tiles.length - 1; i++) {
         tiles[i].show();
     }
+    keyDetect();
 }
 //moves the player when wasd are pressed
-function keyPressed() {
+/*function keyPressed() {
     if(key == 'w') {
         player.move(0, -1);
     } else if(key == 's') {
@@ -44,5 +45,21 @@ function keyPressed() {
     } else if(key == 'd') {
         player.move(1, 0);
     }
-}    
+}*/
 
+function keyDetect() {
+    if(frameCount % 1 == 0) {
+        if (keyIsDown(87)) {//w
+            player.move(0, -1);
+        }
+        if (keyIsDown(83)) {//s
+            player.move(0, 1);
+        }
+       if (keyIsDown(65)) {//a
+           player.move(-1, 0);
+      }
+      if (keyIsDown(68)) {//d
+            player.move(1, 0);
+        }
+    }
+}
