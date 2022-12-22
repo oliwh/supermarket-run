@@ -4,7 +4,7 @@ class Player {
         this.y = levelScale * y;
         this.size = createVector(levelScale / 2, levelScale / 2)
         print("size: " + this.size);
-        this.velocity = 3;
+        this.velocity = 1;
     }
 
     move(x, y) {
@@ -32,7 +32,7 @@ class Player {
                (this.y + (this.size.y / 2) + (y * this.velocity) > tiles[i].y - (levelScale / 2)) &&
                (this.y - (this.size.y / 2) + (y * this.velocity) < tiles[i].y + (levelScale / 2)) ||
                (this.x + (this.size.x / 2) + (x * this.velocity) > levelScale * 25 - this.size.x) ||
-               (this.x - (this.size.x / 2) + (x * this.velocity) < -this.size.x) ||
+               (this.x - (this.size.x / 2) + (x * this.velocity) < - this.size.x) ||
                (this.y + (this.size.y / 2) + (y * this.velocity) > levelScale * 25 - this.size.y) ||
                (this.y - (this.size.y / 2) + (y * this.velocity) < - this.size.y)) {
                 print("collision at: " + tiles[i].x + ", " + tiles[i].y);
