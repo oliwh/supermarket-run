@@ -28,15 +28,20 @@ class Player {
     collision(x, y) {
         for(let i = 0; i < tiles.length - 1; i++) {
             if((this.x + (this.size.x / 2) + (x * this.velocity) > tiles[i].x - (levelScale / 2)) &&
-               (this.x - (this.size.x / 2) + (x * this.velocity) < tiles[i].x + (levelScale / 2)) &&
-               (this.y + (this.size.y / 2) + (y * this.velocity) > tiles[i].y - (levelScale / 2)) &&
-               (this.y - (this.size.y / 2) + (y * this.velocity) < tiles[i].y + (levelScale / 2)) ||
-               (this.x + (this.size.x / 2) + (x * this.velocity) > levelScale * 25 - this.size.x) ||
-               (this.x - (this.size.x / 2) + (x * this.velocity) < - this.size.x) ||
-               (this.y + (this.size.y / 2) + (y * this.velocity) > levelScale * 25 - this.size.y) ||
-               (this.y - (this.size.y / 2) + (y * this.velocity) < - this.size.y)) {
+            (this.x - (this.size.x / 2) + (x * this.velocity) < tiles[i].x + (levelScale / 2)) &&
+            (this.y + (this.size.y / 2) + (y * this.velocity) > tiles[i].y - (levelScale / 2)) &&
+            (this.y - (this.size.y / 2) + (y * this.velocity) < tiles[i].y + (levelScale / 2)) ||
+            (this.x + (this.size.x / 2) + (x * this.velocity) > levelScale * 25 - this.size.x) ||
+            (this.x - (this.size.x / 2) + (x * this.velocity) < - this.size.x) ||
+            (this.y + (this.size.y / 2) + (y * this.velocity) > levelScale * 25 - this.size.y) ||
+            (this.y - (this.size.y / 2) + (y * this.velocity) < - this.size.y)) {
                 print("collision at: " + tiles[i].x + ", " + tiles[i].y);
+                if((tiles[i].x == 45 &&(tiles[i].y == 360)) || (tiles[i].x == 60 &&(tiles[i].y == 360))|| (tiles[i].x == 75 &&(tiles[i].y == 360))) {
+                    checkEnd();
+                    return false;
+                } else {
                 return true;
+                }
             } 
         }
         return false;
