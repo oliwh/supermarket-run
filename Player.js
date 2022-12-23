@@ -4,7 +4,7 @@ class Player {
         this.y = levelScale * y;
         this.size = createVector(levelScale / 2, levelScale / 2)
         print("size: " + this.size);
-        this.velocity = 1;
+        this.velocity = 1.5;
     }
 
     move(x, y) {
