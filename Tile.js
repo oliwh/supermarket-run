@@ -1,8 +1,6 @@
 class Tile {
     /* x coord left (0) to right 
-     * y coord top (0) to bottom
-     * height
-     * width */
+     * y coord top (0) to bottom */
     constructor(x, y, type) {
         this.x = levelScale * x;
         this.y = levelScale * y;
@@ -14,8 +12,6 @@ class Tile {
                 type = '#37946e';
                 break;
         }
-        //this.h = scale * h;
-        //this.w = scale * w;
     }
 
     show() {
