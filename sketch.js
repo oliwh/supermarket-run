@@ -107,7 +107,7 @@ function checkEnd() {
         fill(0);
         textSize(width / 16);
         textAlign(CENTER);
-        text('You escaped! Your time was\n' + (frameCount % 60) + " seconds", width / 2, height / 2);
+        text('Success! Your time was\n' + (frameCount % 60) + " seconds", width / 2, height / 2);
         noLoop();
     }
 }
