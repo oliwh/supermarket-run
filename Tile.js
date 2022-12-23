@@ -4,12 +4,13 @@ class Tile {
     constructor(x, y, type) {
         this.x = levelScale * x;
         this.y = levelScale * y;
+        this.colour = "0, 255, 0";
         switch(type) {
             case 1:
-                type = 150;
+                this.colour = 255;
                 break;
             case 2:
-                type = '#37946e';
+                this.colour = '#37946e';
                 break;
         }
     }
@@ -18,7 +19,7 @@ class Tile {
         //placeholder shelf
         push();
         noStroke();
-        fill(255);
+        fill(this.colour);
         rectMode(CENTER);
         rect(this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale, levelScale);
         pop();
