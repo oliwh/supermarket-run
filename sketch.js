@@ -1,12 +1,39 @@
 let player;
-let levelScale = 15;
+let levelScale = 32;
 let tiles = [];
 let foods = [];
 let numOfItems;
-let foodItems = ["apples", "flour", "chocolate", "lettuce", "potatoes", "oranges", "chocolate"]
+let foodItems = ["img/icons/apple.png", 
+                 "img/icons/banana.png", 
+                 "img/icons/bread.png", 
+                 "img/icons/carrot.png", 
+                 "img/icons/cauliflower.png", 
+                 "img/icons/cheese.png", 
+                 "img/icons/cherry.png", 
+                 "img/icons/corn.png", 
+                 "img/icons/garlic.png", 
+                 "img/icons/grape.png", 
+                 "img/icons/honey.png", 
+                 "img/icons/kiwi.png", 
+                 "img/icons/lemon.png", 
+                 "img/icons/orange.png", 
+                 "img/icons/pineapple.png", 
+                 "img/icons/sausage.png", 
+                 "img/icons/strawberry.png", 
+                 "img/icons/turkey.png"
+                ];
 let score = 0;
+let imgs = [];
+let plrLeft;
+let plrRight;
 
 function preload() {
+    plrLeft = loadImage("img/player_left.png")
+    plrRight = loadImage("img/player_right.png")
+    for(let i = 0; i < foodItems.length; i++) {
+        imgs.push(loadImage(foodItems[i]));
+    }
+    print(imgs);
 }
 
 function setup() {
@@ -24,15 +51,15 @@ function draw() {
     background('#9a9fa7');
     player.show();
     //Draw Level
-    for(let i = 0; i < tiles.length - 1; i++) {
+    for(let i = 0; i < tiles.length; i++) {
         tiles[i].show();
     }
-    for(let i = 0; i < foods.length - 1; i++) {
+    for(let i = 0; i < foods.length; i++) {
         foods[i].show();
     }
     keyDetect();
     for(let i = 0; i < foods.length; i++) {
-        if(dist(player.x, player.y, foods[i].x, foods[i].y) < 8) {
+        if(dist(player.x, player.y, foods[i].x, foods[i].y) < levelScale * 0.75) {
             collectItem(i);
         }
     }
@@ -48,9 +75,11 @@ function keyDetect() {
         }
        if (keyIsDown(65)) {//a
             player.move(-1, 0);
+            player.chgDir(1);
         }
         if (keyIsDown(68)) {//d
             player.move(1, 0);
+            player.chgDir(-1);
         }
     }
 }
@@ -85,7 +114,7 @@ function setupScene() {
                     break;
                 //Food items
                 case 3:
-                    foods.push(new Food(j, i, random(foodItems)));
+                    foods.push(new Food(j, i, floor(random(foodItems.length))));
                     break;
                 //add cases for powerups eventually
             }
@@ -100,7 +129,9 @@ function collectItem(i) {
 }
 
 function checkEnd() {
-    if(score == numOfItems - 1) {
+    print("Validating end...");
+    if(score == numOfItems) {
+        print("Ending game");
         fill(250);
         rectMode(CENTER);
         rect(width / 2,height * 0.01 + height / 2, width * 0.9, height * 0.25);
@@ -109,5 +140,7 @@ function checkEnd() {
         textAlign(CENTER);
         text('Success! Your time was\n' + floor(frameCount / 60) + " seconds", width / 2, height / 2);
         noLoop();
+    } else {
+        print("End checks failed!");
     }
 }

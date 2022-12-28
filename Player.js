@@ -2,9 +2,11 @@ class Player {
     constructor(x, y) {
         this.x = levelScale * x;
         this.y = levelScale * y;
-        this.size = createVector(levelScale / 2, levelScale / 2)
+        this.plrScale = 0.75;
+        this.size = createVector(levelScale * 0.5625 * this.plrScale, levelScale * 0.8125 * this.plrScale);
         print("size: " + this.size);
-        this.velocity = 1.5;
+        this.velocity = 3.0;
+        this.dir = 1;
     }
 
     move(x, y) {
@@ -14,15 +16,16 @@ class Player {
         }
     }
 
+    chgDir(newDir) {
+        this.dir = newDir;
+    }
+
     show() {
-        //placeholder character
-        push();
-        noStroke();
-        fill(255, 0, 0);
-        ellipseMode(CENTER);
-        ellipse(this.x + (levelScale / 2), this.y + (levelScale / 2), this.size.x, this.size.y);
-        pop();
-        //image(playerImg, this.x, this.y, 88, 192);
+        if(this.dir == 1) {
+            image(plrLeft, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+        } else {
+            image(plrRight, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+        }
     }
 
     collision(x, y) {
@@ -36,7 +39,10 @@ class Player {
             (this.y + (this.size.y / 2) + (y * this.velocity) > levelScale * 25 - this.size.y) ||
             (this.y - (this.size.y / 2) + (y * this.velocity) < - this.size.y)) {
                 print("collision at: " + tiles[i].x + ", " + tiles[i].y);
-                if((tiles[i].x == 45 &&(tiles[i].y == 360)) || (tiles[i].x == 60 &&(tiles[i].y == 360))|| (tiles[i].x == 75 &&(tiles[i].y == 360))) {
+                if((tiles[i].x == (levelScale * 3) || 
+                    tiles[i].x == (levelScale * 4) || 
+                    tiles[i].x == (levelScale * 5)) && 
+                    (tiles[i].y == (levelScale * 24))) {
                     checkEnd();
                     return false;
                 } else {
