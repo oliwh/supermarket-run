@@ -3,7 +3,7 @@
 /* 0 is blank
  * 1 is wall
  * 2 is exit
- * 3-9 are powerups
+ * Food and powerups generated on start
  */
 let level = [
     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
