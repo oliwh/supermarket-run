@@ -16,12 +16,6 @@ class Tile {
     }
 
     show() {
-        //placeholder shelf
-        push();
-        noStroke();
-        fill(this.colour);
-        rectMode(CENTER);
-        rect(this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale, levelScale);
-        pop();
+        //Deprecated due to different level render method
     }
 }

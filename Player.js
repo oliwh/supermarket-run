@@ -4,7 +4,6 @@ class Player {
         this.y = levelScale * y;
         this.plrScale = 0.75;
         this.size = createVector(levelScale * 0.5625 * this.plrScale, levelScale * 0.8125 * this.plrScale);
-        print("size: " + this.size);
         this.velocity = 3.0;
         this.dir = 1;
     }
