@@ -23,14 +23,6 @@ let foodItems = [
     "img/icons/strawberry.png", 
     "img/icons/turkey.png"
 ];
-let tileTypes = [
-    "img/tiles/tile-floor.png",
-    "img/tiles/tile-wall-y.png",
-    "img/tiles/tile-wall-y-end.png",
-    "img/tiles/tile-wall-x-1.png",
-    "img/tiles/tile-wall-x-2.png"
-];
-let tileImgs = [];
 let score = 0;
 let imgs = [];
 let plrLeft, plrRight;
@@ -45,9 +37,6 @@ function preload() {
     //Load food images
     for(let i = 0; i < foodItems.length; i++) {
         imgs.push(loadImage(foodItems[i]));
-    }
-    for(let i = 0; i < tileTypes.length; i++) {
-        tileImgs.push(loadImage(tileTypes[i]));
     }
     bg = loadImage("img/tiles/level.png");
 }
