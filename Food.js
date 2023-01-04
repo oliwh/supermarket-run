@@ -7,6 +7,10 @@ class Food {
 
     show() {
         imageMode(CENTER);
-        image(imgs[this.food], this.x + (levelScale / 2), this.y + (levelScale / 2));
+        if(up == false) {
+            image(imgs[this.food], this.x + (levelScale / 2), this.y + (levelScale / 2));
+        } else {
+            image(imgs[this.food], this.x + (levelScale / 2), this.y + (levelScale / 2) - levelScale / 16);
+        }
     }
 }
