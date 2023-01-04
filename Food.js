@@ -1,6 +1,7 @@
-class Food extends Tile {
+class Food {
     constructor(x, y, food) {
-        super(x, y);
+        this.x = levelScale * x;
+        this.y = levelScale * y;
         this.food = food;
     }
 
