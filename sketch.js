@@ -66,9 +66,9 @@ function draw() {
     imageMode(CENTER);
     image(bg, width / 2, height / 2, 800, 800);
     //Draw Player
-    if(frameCount % 30 == 0) {
+    if(frameCount % 40 == 0) {
         up = true;
-    } else if(frameCount % 15 == 0) {
+    } else if(frameCount % 20 == 0) {
         up = false;
     }
     player.show();
