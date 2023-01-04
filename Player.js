@@ -21,9 +21,17 @@ class Player {
 
     show() {
         if(this.dir == 1) {
-            image(plrLeft, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+            if(up == false) {
+                image(plrLeft, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+            } else {
+                image(plrLeftUp, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);        
+            }
         } else {
-            image(plrRight, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+            if(up == false) {
+                image(plrRight, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+            } else {
+                image(plrRightUp, this.x + (levelScale / 2), this.y + (levelScale / 2), levelScale * this.plrScale, levelScale * this.plrScale);
+            }
         }
     }
 

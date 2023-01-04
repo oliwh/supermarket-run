@@ -25,14 +25,17 @@ let foodItems = [
 ];
 let score = 0;
 let imgs = [];
-let plrLeft, plrRight;
+let plrLeft, plrRight, plrLeftUp, plrRightUp;
+let up = false;
 let start;
 let bg;
 
 function preload() {
     //Load player images
-    plrLeft = loadImage("img/player/player_left.png")
-    plrRight = loadImage("img/player/player_right.png")
+    plrLeft = loadImage("img/player/player_left.png");
+    plrLeftUp = loadImage("img/player/player_left-up.png");
+    plrRight = loadImage("img/player/player_right.png");
+    plrRightUp = loadImage("img/player/player_right-up.png");
 
     //Load food images
     for(let i = 0; i < foodItems.length; i++) {
@@ -62,6 +65,12 @@ function draw() {
 
     imageMode(CENTER);
     image(bg, width / 2, height / 2, 800, 800);
+    //Draw Player
+    if(frameCount % 30 == 0) {
+        up = true;
+    } else if(frameCount % 15 == 0) {
+        up = false;
+    }
     player.show();
     //Draw Level
     for(let i = 0; i < tiles.length; i++) {
