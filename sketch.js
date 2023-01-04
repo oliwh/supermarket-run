@@ -175,11 +175,11 @@ function startScreen() {
     print("Initialising start screen...")
     fill(250);
     rectMode(CENTER);
-    rect(width / 2, height * 0.54, width * 0.85, height * 0.25);
+    rect(width / 2, height * 0.54, width * 0.85, height * 0.30);
     fill(0);
     textSize(width / 24);
     textAlign(CENTER);
-    text('You\'re in the supermarket after hours!\nTry to collect all your shopping as quickly \nas possibleand then run to the exit!\n(Press enter to begin)', width / 2, height * 0.475);
+    text('You\'re in the supermarket after hours!\nTry to collect all your shopping as quickly \nas possible and then run to the exit!\n(Use WASD to move and\npress enter to begin)', width / 2, height * 0.45);
     noLoop();
     print("Start successfully screen drawn!");
 }
